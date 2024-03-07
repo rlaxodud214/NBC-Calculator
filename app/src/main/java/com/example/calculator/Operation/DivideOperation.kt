@@ -9,7 +9,7 @@ class DivideOperation(val formula: Formula): AbstractOperation() {
     }
 
     fun divide(num1: Int, num2: Int): Int {
-        require(num2 == 0) {
+        require(num2 != 0) {
             "It cannot be divided by 0."
         }
 

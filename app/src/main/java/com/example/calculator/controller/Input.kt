@@ -18,7 +18,7 @@ class Input(val inputView: InputView) {
 
     fun addInput(): Formula {
         val inputType = input("Please enter a value between 1 and 5 to continue calculating, or -1 to stop. \n"
-                + "The numbers 1 to 5 stand for +, -, *, /, and %, respectively : ")
+                + "The numbers 1 to 4 stand for +, -, *, and /, respectively : ")
 
         // TODO : Formula(PASS) 리턴 안하고, Process의 while문에서 break 하도록 수정하기
         if (inputType == "-1") {
@@ -26,11 +26,11 @@ class Input(val inputView: InputView) {
             return Formula(PASS)
         }
 
-        val inputNumber = input("Please enter a value : ")
-
         require(inputType in "1".."4") {
-            println("It is not the correct type.")
+            "It is not the correct number."
         }
+
+        val inputNumber = input("Please enter a value : ")
 
         return Formula.create(inputType, inputNumber)
     }

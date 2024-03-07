@@ -25,6 +25,7 @@ class Formula(_inputData: String) {
     }
 
     fun validateNumberCount(inputData: String): List<Int> {
+        // 100 + 12 1 입력 시, 아래 replace 때문에 100 + 121으로 처리되는 이슈
         val numData = inputData.split(operator).map {
             it.replace(" ", "").toInt()
         }

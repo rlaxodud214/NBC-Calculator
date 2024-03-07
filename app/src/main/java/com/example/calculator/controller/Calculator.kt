@@ -9,6 +9,7 @@ class Calculator(val formula: Formula) {
             '-' -> formula.run { minus(numbers[0], numbers[1]) }
             '*' -> formula.run { multiply(numbers[0], numbers[1]) }
             '/' -> formula.run { divide(numbers[0], numbers[1]) }
+            '%' -> formula.run { remain(numbers[0], numbers[1]) }
             else -> throw Exception("Error - operator not in operators")
         }
     }
@@ -17,4 +18,9 @@ class Calculator(val formula: Formula) {
     fun minus(num1: Int, num2: Int) = num1 - num2
     fun multiply(num1: Int, num2: Int) = num1 * num2
     fun divide(num1: Int, num2: Int) = num1 / num2
+    fun remain(num1: Int, num2: Int) = num1 % num2
+
+    companion object {
+        var lastResultValue = ""
+    }
 }

@@ -37,7 +37,7 @@ class Formula(_inputData: String) {
     }
 
     companion object {
-        val operators = listOf('+', '-', '*', '/', '%')
+        val operators = listOf('+', '-', '*', '/')
 
         fun create(operator: String, number: String): Formula {
             val convertOperator = operators[operator.toInt() - 1] // "1" -> "+"

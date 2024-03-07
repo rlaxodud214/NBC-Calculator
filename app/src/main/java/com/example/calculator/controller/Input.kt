@@ -28,7 +28,7 @@ class Input(val inputView: InputView) {
 
         val inputNumber = input("Please enter a value : ")
 
-        require(inputType in "1".."5") {
+        require(inputType in "1".."4") {
             println("It is not the correct type.")
         }
 

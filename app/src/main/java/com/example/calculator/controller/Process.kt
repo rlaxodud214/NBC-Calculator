@@ -21,7 +21,6 @@ class Process(val inputView: InputView) {
             }
 
             val cal = Calculator(formula)
-
             Calculator.lastResultValue = cal.calculate().toString()
             println("result: ${Calculator.lastResultValue}")
         }

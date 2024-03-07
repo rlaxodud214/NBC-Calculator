@@ -18,7 +18,7 @@ class Formula(_inputData: String) {
         }
 
         require(operator.count() == 1) {
-            println("not operator")
+            "The number of operators is not 1"
         }
 
         return if(operator.count() == 1) operator[0] else 'e' // error
@@ -31,9 +31,9 @@ class Formula(_inputData: String) {
         }
 
         require(numData.count() == 2) { "not two number" }
-        require(numData.all { it is Int }) { "not Int" }
+        require(numData.all { it is Int }) { "not number" }
 
-        return numData!!
+        return numData
     }
 
     companion object {

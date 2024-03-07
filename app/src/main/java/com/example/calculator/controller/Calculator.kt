@@ -1,13 +1,14 @@
 package com.example.calculator.controller
 
+import com.example.calculator.Operation.AbstractOperation
 import com.example.calculator.Operation.AddOperation
 import com.example.calculator.Operation.DivideOperation
 import com.example.calculator.Operation.MultiplyOperation
 import com.example.calculator.Operation.SubstractOperation
 import com.example.calculator.model.Formula
 
-open class Calculator(val formula: Formula) {
-    open fun calculate(): Int {
+open class Calculator(val formula: Formula): AbstractOperation() {
+    override fun calculate(): Int {
         return when (formula.operator) {
             '+' -> AddOperation(formula)
             '-' -> SubstractOperation(formula)

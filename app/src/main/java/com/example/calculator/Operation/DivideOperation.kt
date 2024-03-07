@@ -3,7 +3,7 @@ package com.example.calculator.Operation
 import com.example.calculator.controller.Calculator
 import com.example.calculator.model.Formula
 
-class DivideOperation(formula: Formula): Calculator(formula) {
+class DivideOperation(val formula: Formula): AbstractOperation() {
     override fun calculate(): Int {
         return formula.run { divide(numbers[0], numbers[1]) }
     }

@@ -1,7 +1,9 @@
 package com.example.calculator.controller
 
 import com.example.calculator.InputState
+import com.example.calculator.controller.Calculator.Companion.operators
 import com.example.calculator.model.Formula
+import com.example.calculator.model.setValue
 import com.example.calculator.view.InputView
 
 class Input(val inputView: InputView) {
@@ -12,7 +14,7 @@ class Input(val inputView: InputView) {
         val inputData = input("Input Formula (ex. 100+2) : ")
         Process.inputState = InputState.KEEP
 
-        return Formula(inputData)
+        return Formula().setValue(inputData)
     }
 
     fun addInput(): Formula? {
@@ -23,12 +25,12 @@ class Input(val inputView: InputView) {
         val exit = isExit(inputType)
         val notOperator = isNotOperator(inputType)
 
-        if(exit == true || notOperator == true) {
+        if (exit == true || notOperator == true) {
             return null
         }
         val inputNumber = input("input Value : ")
 
-        return Formula.create(inputType, inputNumber)
+        return Formula().setValue(inputType, inputNumber)
     }
 
     fun isReset(ch: String) {
@@ -46,9 +48,9 @@ class Input(val inputView: InputView) {
     }
 
     fun isNotOperator(ch: String): Boolean {
-        val condition = ch.trim()[0] !in Formula.operators
+        val condition = ch.trim()[0] !in operators
 
-        if(ch.trim()[0] != 'r' && condition) {
+        if (ch.trim()[0] != 'r' && condition) {
             println("[Error] : It is not the correct number. retry")
         }
 

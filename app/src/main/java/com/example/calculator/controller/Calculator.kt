@@ -19,5 +19,6 @@ class Calculator() {
 
     companion object {
         var lastResultValue = ""
+        val operators = listOf('+', '-', '*', '/')
     }
 }

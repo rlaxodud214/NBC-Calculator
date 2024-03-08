@@ -13,9 +13,9 @@ fun main() {
     try {
         processController.run()
     } catch (e: NumberFormatException) {
-        e.message?.let { println("[Error] Cannot be converted to number.") }
+        e.message?.let { println("[Error] : Cannot be converted to number.") }
     } catch (e: Exception) {
-        e.message?.let { println("[Error] " + it) }
+        e.message?.let { println("[Error] : " + it) }
     }
 }
 

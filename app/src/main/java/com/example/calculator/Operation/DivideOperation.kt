@@ -1,15 +1,14 @@
 package com.example.calculator.Operation
 
-import com.example.calculator.controller.Calculator
 import com.example.calculator.model.Formula
 
-class DivideOperation(val formula: Formula): AbstractOperation() {
-    override fun calculate(): Int {
+class DivideOperation() : Operation() {
+    override fun operate(formula: Formula): Double {
         return formula.run { divide(numbers[0], numbers[1]) }
     }
 
-    fun divide(num1: Int, num2: Int): Int {
-        require(num2 != 0) {
+    fun divide(num1: Double, num2: Double): Double {
+        require(num2 != 0.0) {
             "It cannot be divided by 0."
         }
 

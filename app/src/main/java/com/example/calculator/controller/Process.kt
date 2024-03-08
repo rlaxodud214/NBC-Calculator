@@ -15,14 +15,18 @@ class Process(val inputView: InputView) {
                 else -> break
             }
 
+            if (formula == null) {
+                continue
+            }
+
             // 입력 상태가 DONE 일 때만 null을 반환하므로 아래에서 formula!! 사용
-            if(inputState == InputState.DONE) {
+            if (inputState == InputState.DONE) {
                 println("final Result: ${Calculator.lastResultValue}")
                 break
             }
 
-            val cal = Calculator(formula!!)
-            Calculator.lastResultValue = cal.calculate().toString()
+            val cal = Calculator()
+            Calculator.lastResultValue = cal.calculate(formula!!).toString()
             println("result: ${Calculator.lastResultValue}")
         }
     }

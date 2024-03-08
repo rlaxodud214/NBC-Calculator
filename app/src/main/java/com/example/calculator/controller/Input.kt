@@ -3,7 +3,6 @@ package com.example.calculator.controller
 import com.example.calculator.InputState
 import com.example.calculator.model.Formula
 import com.example.calculator.view.InputView
-import java.net.PasswordAuthentication
 
 class Input(val inputView: InputView) {
 
@@ -17,24 +16,42 @@ class Input(val inputView: InputView) {
     }
 
     fun addInput(): Formula? {
-        val inputType = input("Please enter a value between 1 and 5 to continue calculating, or -1 to stop. \n"
-                + "The numbers 1 to 4 stand for +, -, *, and /, respectively : ")
+        println("\nNext, we proceed with the calculation.")
+        val inputType = input("input Operator (ex. +, -, *, /), -1 is stop, r is reset : ")
 
-        if (inputType == "-1") {
-            Process.inputState = InputState.DONE
+        isReset(inputType)
+        val exit = isExit(inputType)
+        val notOperator = isNotOperator(inputType)
+
+        if(exit == true || notOperator == true) {
             return null
         }
-
-        require(inputType in "1".."4") {
-            "It is not the correct number."
-        }
-
-        val inputNumber = input("Please enter a value : ")
+        val inputNumber = input("input Value : ")
 
         return Formula.create(inputType, inputNumber)
     }
 
-    companion object {
-        const val PASS = "100+2"
+    fun isReset(ch: String) {
+        if (ch == "r") {
+            Calculator.lastResultValue = "0"
+            println("Reset is complete. Current result is ${Calculator.lastResultValue}")
+        }
+    }
+
+    fun isExit(ch: String): Boolean {
+        return if (ch == "-1") {
+            Process.inputState = InputState.DONE
+            true
+        } else false
+    }
+
+    fun isNotOperator(ch: String): Boolean {
+        val condition = ch.trim()[0] !in Formula.operators
+
+        if(ch.trim()[0] != 'r' && condition) {
+            println("[Error] : It is not the correct number. retry")
+        }
+
+        return condition
     }
 }

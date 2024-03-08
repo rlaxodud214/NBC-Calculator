@@ -2,8 +2,8 @@ package com.example.calculator.Operation
 
 import com.example.calculator.model.Formula
 
-class DivideOperation() : AbstractOperation() {
-    override fun calculate(formula: Formula): Double {
+class DivideOperation() : Operation() {
+    override fun operate(formula: Formula): Double {
         return formula.run { divide(numbers[0], numbers[1]) }
     }
 

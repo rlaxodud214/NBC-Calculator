@@ -1,10 +1,9 @@
 package com.example.calculator.Operation
 
-import com.example.calculator.controller.Calculator
 import com.example.calculator.model.Formula
 
-class SubstractOperation() : AbstractOperation() {
-    override fun calculate(formula: Formula): Double {
+class SubstractOperation() : Operation() {
+    override fun operate(formula: Formula): Double {
         return formula.run { minus(numbers[0], numbers[1]) }
     }
 
